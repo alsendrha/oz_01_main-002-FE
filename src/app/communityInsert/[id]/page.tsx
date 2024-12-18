@@ -10,7 +10,6 @@ export async function generateStaticParams() {
     data = getData.docs.map((doc) => ({ id: `update=${doc.data().id}` }));
   }
   data.push({ id: "insert" });
-
   return data;
 }
 
@@ -21,7 +20,7 @@ const CommunityInsert = ({ params }: { params: { id: string } }) => {
     <>
       <InsertForm paramsId={paramsId} />
     </>
-  )
-}
+  );
+};
 
-export default CommunityInsert
+export default CommunityInsert;
