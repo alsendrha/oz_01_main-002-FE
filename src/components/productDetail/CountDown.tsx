@@ -20,7 +20,7 @@ const CountDown = ({
   refetch,
 }: CountDownProps) => {
   const [dDay, setDDay] = useState<string>();
-  const { mutate: finalStatus } = useAuctionPutStatus();
+  // const { mutate: finalStatus } = useAuctionPutStatus();
   const targetDate = new Date(endTime!);
 
   useEffect(() => {
@@ -32,15 +32,15 @@ const CountDown = ({
         clearInterval(timer);
         setDDay("0일 0시간 0분 0초");
         if (active !== undefined && active !== "결제대기") {
-          finalStatus(
-            { auctionId: auctionId, status: false, isActive: "경매종료" },
-            {
-              onSuccess: () => {
-                // itemRefetch();
-                refetch();
-              },
-            }
-          );
+          // finalStatus(
+          //   { auctionId: auctionId, status: false, isActive: "경매종료" },
+          //   {
+          //     onSuccess: () => {
+          //       // itemRefetch();
+          //       refetch();
+          //     },
+          //   }
+          // );
         }
         return;
       }

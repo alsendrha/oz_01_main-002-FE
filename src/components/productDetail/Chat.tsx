@@ -15,27 +15,27 @@ type ChatTypeProps = {
 
 const Chat = ({ productId, auctionId, finalPrice }: ChatTypeProps) => {
   const [isChat, setIsChat] = useState("");
-  const { data } = useGetUser();
-  const { mutate: postBidding } = usePostWinner();
+  // const { data } = useGetUser();
+  // const { mutate: postBidding } = usePostWinner();
 
   const buttonMenu = [
     { id: 1, name: "관심" },
     { id: 2, name: "입찰" },
     { id: 3, name: "충전" },
   ];
-  const { mutate: userChatRoom } = useChatRoom();
-  const { messages, isConnected, sendMessage } = useWebSocket();
+  // const { mutate: userChatRoom } = useChatRoom();
+  // const { messages, isConnected, sendMessage } = useWebSocket();
 
-  useEffect(() => {
-    if (isConnected) {
-      setTimeout(() => {
-        userChatRoom({
-          room_id: productId,
-          user_id: localStorage.getItem("user_id"),
-        });
-      }, 1000);
-    }
-  }, [isConnected]);
+  // useEffect(() => {
+  //   if (isConnected) {
+  //     setTimeout(() => {
+  //       userChatRoom({
+  //         room_id: productId,
+  //         user_id: localStorage.getItem("user_id"),
+  //       });
+  //     }, 1000);
+  //   }
+  // }, [isConnected]);
 
   // const handleWinner = async () => {
   //   if (!localStorage.getItem('access_token')) return;
@@ -76,40 +76,40 @@ const Chat = ({ productId, auctionId, finalPrice }: ChatTypeProps) => {
       }
 
       const newPrice = finalPrice + increaseAmount;
-      postBidding(
-        {
-          product_id: Number(productId),
-          auction_id: Number(auctionId),
-          bid_price: newPrice,
-        },
-        {
-          onSuccess: () => {
-            sendMessage({
-              roomId: productId,
-              message: `${newPrice.toLocaleString()}원 입찰하였습니다`,
-            });
-            // refetch();
-          },
-        }
-      );
+      // postBidding(
+      //   {
+      //     product_id: Number(productId),
+      //     auction_id: Number(auctionId),
+      //     bid_price: newPrice,
+      //   },
+      //   {
+      //     onSuccess: () => {
+      //       // sendMessage({
+      //       //   roomId: productId,
+      //       //   message: `${newPrice.toLocaleString()}원 입찰하였습니다`,
+      //       // });
+      //       // refetch();
+      //     },
+      //   }
+      // );
     } else if (name === "충전") {
     }
   };
   const regex = /입찰하였습니다/;
 
-  useEffect(() => {
-    const latestMessage = messages[messages.length - 1];
-    if (latestMessage && regex.test(latestMessage)) {
-      // refetch();
-    }
-  }, [messages]);
+  // useEffect(() => {
+  //   const latestMessage = messages[messages.length - 1];
+  //   if (latestMessage && regex.test(latestMessage)) {
+  //     // refetch();
+  //   }
+  // }, [messages]);
 
   return (
     <div className="w-[568px] max-[1255px]:w-full px-[12px] max-[1255px]:px-0 max-[1255px]:pr-3 max-[855px]:pr-0 m-3 max-[855px]:m-0 max-[855px]:my-3">
       <div className="box-border w-full h-[430px] bg-white border border-b-0 rounded-t-xl overflow-auto scrollbar-hide flex flex-col-reverse">
         <div className="relative">
           <div className="p-3 h-full flex flex-col">
-            {messages.map((chat, index) => {
+            {/* {messages.map((chat, index) => {
               const mat = chat.match(regex);
               chat = mat ? chat.replace(/:/g, "님") : chat;
               return (
@@ -132,7 +132,7 @@ const Chat = ({ productId, auctionId, finalPrice }: ChatTypeProps) => {
                   </p>
                 </div>
               );
-            })}
+            })} */}
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@ const Chat = ({ productId, auctionId, finalPrice }: ChatTypeProps) => {
             if (e.key === "Enter") {
               e.preventDefault();
               if (isChat.trim() !== "") {
-                sendMessage({ roomId: "2", message: isChat });
+                // sendMessage({ roomId: "2", message: isChat });
                 setIsChat("");
               }
             }
@@ -161,7 +161,7 @@ const Chat = ({ productId, auctionId, finalPrice }: ChatTypeProps) => {
               return;
             }
             if (isChat.trim() !== "") {
-              sendMessage({ roomId: productId, message: isChat });
+              // sendMessasge({ roomId: productId, message: isChat });
               setIsChat("");
             }
           }}
