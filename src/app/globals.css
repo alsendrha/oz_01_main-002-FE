@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .input_number_arrow_none::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  src: url('/static/fonts/Pretendard-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'Pretendard';
+  background-color: #222;
+}
+
+@font-face {
+  font-family: 'CoolGuy-Medium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403@1.0/CoolGuy-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal; 
+}
