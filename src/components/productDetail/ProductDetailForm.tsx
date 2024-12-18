@@ -26,7 +26,6 @@ const ProductDetailForm = ({
   const detailData = data.data
     .filter((item) => item.product_id === Number(productId))
     .map((item) => item)[0];
-  console.log("detailData", detailData);
   const { data: winnerData, refetch: winnerRefetch } =
     useGetWinnerUser(productId);
 
@@ -35,15 +34,7 @@ const ProductDetailForm = ({
     setWinner(winnerData?.data.winner);
   }, [winnerData]);
 
-  if (!auctionId)
-    return (
-      <div className="w-full h-[calc(100vh-150px)] flex justify-center items-center">
-        <div className="w-[80px] h-[80px] rounded-full bg-gradient-to-t from-[#D1B383] to-white flex justify-center items-center animate-spin">
-          <div className="w-[65px] h-[65px] rounded-full bg-[#222]"></div>
-        </div>
-      </div>
-    );
-  if (!data)
+  if (!auctionId || !data)
     return (
       <div className="w-full h-[calc(100vh-150px)] flex justify-center items-center">
         <div className="w-[80px] h-[80px] rounded-full bg-gradient-to-t from-[#D1B383] to-white flex justify-center items-center animate-spin">
