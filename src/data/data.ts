@@ -1,3 +1,9 @@
+export const LoginMenu = [
+  { id: 1, name: "회원가입", link: "/signup" },
+  { id: 2, name: "이메일 찾기", link: "/login" },
+  { id: 3, name: "비밀번호 찾기", link: "/login" },
+];
+
 export const data = {
   data: [
     {
